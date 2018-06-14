@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>几种居中布局</title>
+    <style>
+        *{margin: 0;padding: 0;box-sizing: border-box;}
+        h3{margin:20px auto;width: 50%;text-align: center;}
+        div{background: #000;color: #fff;}
+        div.demo{margin-top:40px;background: #fff;color: #000;}
+        /* 内联元素水平居中 */
+        .inline-horizontally{
+            text-align: center;
+        }
+        /* 有宽度的块状元素水平居中 */
+        .block-horizontally{
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* 多个没宽度的块状元素居中 */
+        .block-horizontally-moreThanOne-inline-block{
+            text-align: center;
+        }
+        .block-horizontally-moreThanOne-inline-block > div {
+            display: inline-block;
+            margin:10px;
+            background: #aaa;
+        }
+        /* 多个没宽度的块状元素居中,flex */
+        .block-horizontally-moreThanOne-flex{
+            display: flex;
+            justify-content: center;
+        }
+        .block-horizontally-moreThanOne-flex > div {
+            display: inline-block;
+            margin:10px;
+            background: #aaa;
+        }
+        /* 单行内联元素垂直居中,用padding */
+        .inline-signle-padding{
+            padding-top:50px;
+            padding-bottom:50px;
+        }
+        /* 单行内联元素垂直居中,用line-height */
+        .inline-signle-line-heght{
+            height: 100px;
+            line-height: 100px;
+        }
+        /* 多行内联元素用flex,垂直左右居中 */
+        .inline-multiple-flex{
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        /* 块状元素已知高度,用定位 */
+        .block-height-postion{
+            position: relative;
+            height: 200px;
+        }
+        .block-height-postion div{
+            position: absolute;
+            top:50%;
+            height: 100px;
+        }
+        /* 块状元素高度未知,用定位+子元素transform:translateY(-50%); */
+        .block-unknowheight-postion-transform-translateY{
+            position: relative;
+            height: 200px;
+        }
+        .block-unknowheight-postion-transform-translateY div{
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo">
+        <h3>内联元素/文本水平居中</h3>
+        <div class="inline-horizontally">
+            <span>这是一个内联文本</span>
+            <nav class=".inline">
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+            </nav>
+        </div>
+    </div>
+    <div class="demo">
+        <h3>拥有固定宽度的块状元素</h3>
+        <div class="block-horizontally">
+            这是一个拥有固定宽度的块状元素
+        </div>
+    </div>
+    <div class="demo">
+        <h3>多个没宽度的块状元素居中,变成inline-block</h3>
+        <div class="block-horizontally-moreThanOne-inline-block">
+            <div>One</div>
+            <div>Two</div>
+            <div>Three</div>
+        </div>
+    </div>
+    <div class="demo">
+        <h3>多个没宽度的块状元素居中,用flex</h3>
+        <div class="block-horizontally-moreThanOne-flex">
+            <div>One</div>
+            <div>Two</div>
+            <div>Three</div>
+        </div>
+    </div>
+    <div class="demo">
+        <h3>单行内联元素,用padding</h3>
+        <div class="inline-signle-padding">
+            <span>这是单行内联元素</span>
+        </div>
+    </div>
+    <div class="demo">
+            <h3>单行内联元素,用line-heght</h3>
+            <div class="inline-signle-line-heght">
+                <span>这是单行内联元素</span>
+            </div>
+    </div>
+    <div class="demo">
+        <h3>多行内联元素,用flex</h3>
+        <div class="inline-multiple-flex">
+            多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素
+            多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素
+            多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素
+            多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素
+            多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素多行内联元素
+        </div>
+    </div>
+    <div class="demo">
+        <h3>已知高度的块状元素,父元素绝对定位,要居中的子元素相对定位</h3>
+        <div class="block-height-postion">
+            <div>已知高度的块状元素已知高度的块状元素已知高度的块状元素已知高度的块状元素已知高度的块状元素</div>
+        </div>
+    </div>
+    <div class="demo">
+        <h3>块状元素高度未知,用定位+子元素transform:translateY(-50%);</h3>
+        <div class="block-unknowheight-postion-transform-translateY">
+            <div>块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知块状元素高度未知</div>
+        </div>
+    </div>
+</body>
+</html>
